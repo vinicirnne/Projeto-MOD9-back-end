@@ -13,14 +13,14 @@ console.log(card4 + " - " + 4);
 console.log(card5 + " - " + 5);
 do {
     //Variaveis para que ocorra a votação
-    let c1 = 0;
-    let c2 = 0;
-    let c3 = 0;
-    let c4 = 0;
-    let c5 = 0;
+    let c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0;
     //Estrutura de repetição para votação secreta
     for (let i = 1; i <= 5; i++) {
-        let voto = entrada("Qual sera o número do cardeal votado? ");
+        let voto;
+        while (true) {
+            voto = entrada("Digite o voto para um cardeal(De 1 a 5, Numeros menores que 1 e maiores que 5 não serão computados!); ");
+            if (voto >= 1 && voto <= 5)break; 
+        }
         //Estrutura para adição de votos as variaveis da votação
         if (voto == '1') {
             c1++;
@@ -30,12 +30,15 @@ do {
             c3++;
         } else if (voto == '4') {
             c4++;
-        } else {
+        } else if (voto == '5') {
             c5++;
+        } else if (voto == '') {
+            console.log("Nenhum voto computado!")
         }
     }
-    let encerrar = entrada("Digite S para encerrar votação e ver o resultado; ")//Encerramento da votação
-    if (encerrar == 'S' || encerrar == 's') {
+    //Encerramento da votação
+    let encerrar = entrada("Digite qualquer tecla para encerrar votação e ver o resultado; ")//Encerramento da votação
+    if (encerrar.trim() !== "") {
         //Contagem de votos para decisão do vencendor ou se irá reiniciar votação
         if (c1 >= 4) {
             console.log("O PAPA ELEITO É; " + card1); break;
