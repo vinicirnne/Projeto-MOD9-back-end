@@ -1,4 +1,6 @@
 const entrada = require('prompt-sync')({ sigint: false });
+
+//Registro e associação de numeros ao cardeal
 let cardeais = []
 for(let i=1; i <=5; i++){
     cardeal = entrada("Digite nome do cardeal " + i + ":")
